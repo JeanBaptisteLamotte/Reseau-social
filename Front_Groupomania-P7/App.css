@@ -1,0 +1,18 @@
+.login,
+.image {
+  min-height: 100vh;
+  
+}
+.bg-image {
+  background-image: url('/img_logo/nom et logo.png');
+  background-size: 50%;
+  background-position: center;
+ 
+}
+
+/* small { 
+  color: #FD2D01;
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  margin-left: 25px;
+} */
