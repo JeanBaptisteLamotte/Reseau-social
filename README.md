@@ -1,42 +1,36 @@
+# Guide d'installation Reseau Social Groupomania 👨🏻‍💻
+![Logo Groupomania](Front_Groupomania-P7/public/img_et_logos/nom.png)
 
-## Fiche de Fonctionnement du Reseau Social Groupomania 👨🏻‍💻👩🏿‍💻
+## Technologies utilisées :  
 
-## Avant de commencer assurez-vous d'avoir NODE JS installé sur votre machine.
-Si ce n'est pas le cas, vous pourrez facilement l'installer en suivant ce lien
-https://nodejs.org/fr/download/
-
-## Installation :
-
-#### Créer un dossier dans lequel vous clonerez le repos:
-Ouvrez un terminal dans ce dossier et copiez cette commande :  
-git clone https://github.com/BRIVAL-M/Groupomania-FULLSTACK.git
-### Back End :
-#### Rendez-vous dans le dossier Backend avec votre terminal :
-
-Installez les modules avec : npm install
-
-Vous pouvez maintenant ouvrir ce dossier
-dans votre éditeur de code, cherchez le fichier ENV 
-et collez les informations qui vous ont été fournies.
-
-#### Pour démarer le server du back : nodemon server
-
-### Front End :
-#### Rendez-vous dans le dossier Frontend avec votre terminal :
-Installez les modules avec : npm install
-
-#### Pour démarer le front : npm run dev
-Par défaut c'est sur http://localhost:3000/ 
-qu'il faudra vous rendre mais si ce port est déjà utilisé
-merci de vous rendre à l'adresse indiquée sur le terminal.
-
-## Technologies utilisées dans ce projet :
 ### Back End :
 NodeJs / Express / Express-rate-limit / Express-validator /
 Dotenv / Jsonwebtoken / Bcrypt / Cors / Multer / Mongoose /
-Mongoose-unique-validator
-#### Base de données :
-MongoDb
+Mongoose-unique-validator  
+
+### Base de données :
+MongoDb  
 
 ### Front End :
-Vue 3 / Vite / Bootstrap 5
+Vue 3 / Vite / Bootstrap 5  
+
+## Installation
+
+__Avant de commencer bien s'assurer d'avoir installer NODE JS__  
+Sivous ne l'avez pas sur votre machine voici 👉🏻 [le lien](https://nodejs.org/fr/download/)
+
+### 1ere Etape 👇🏻 :
+Créer un dossier dans lequel vous clonerez le repositorie
+Ouvrez un terminal depuis ce dossier et copiez cette commande :  
+git clone [le lien](https://github.com/Alpha1788/OCR_P7_Groupomania.git)
+
+### 2eme Etape 👇🏻 :
+Rendez-vous dans le dossier Back_Groupomania-P7 avec votre terminal  
+Puis installez les modules avec la commande : npm install
+Enfin pour demarrer le serveur du back tapez la commande : nodemon server  
+  
+### 3eme Etape 👇🏻 :  
+Rendez-vous dans le dossier Front_Groupomania-P7 avec votre terminal  
+Puis installez les modules avec la commande : npm install
+Enfin pour demarrer le serveur du front tapez la commande : npm run dev  
+*Vous pouvez cliquer directement sur le lien que vous propose votre terminal sinon vous pouvez vous rendre sur votre navigateur a l'adresse suivante* [le lien](http://localhost:3000/)
