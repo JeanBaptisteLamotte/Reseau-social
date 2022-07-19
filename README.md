@@ -17,12 +17,12 @@ Vue 3 / Vite / Bootstrap 5
 ## Installation
 
 __Avant de commencer bien s'assurer d'avoir installer NODE JS__  
-Sivous ne l'avez pas sur votre machine voici 👉🏻 [le lien](https://nodejs.org/fr/download/)
+Si vous ne l'avez pas sur votre machine voici 👉🏻 [le lien](https://nodejs.org/fr/download/) de la documentation à suivre
 
 ### 1ere Etape 👇🏻 :
-Créer un dossier dans lequel vous clonerez le repositorie
+Créer un dossier dans lequel vous clonerez le repositorie  
 Ouvrez un terminal depuis ce dossier et copiez cette commande :  
-git clone [le lien](https://github.com/Alpha1788/OCR_P7_Groupomania.git)
+git clone https://github.com/Alpha1788/OCR_P7_Groupomania.git
 
 ### 2eme Etape 👇🏻 :
 Rendez-vous dans le dossier Back_Groupomania-P7 avec votre terminal  
@@ -31,6 +31,7 @@ Enfin pour demarrer le serveur du back tapez la commande : nodemon server
   
 ### 3eme Etape 👇🏻 :  
 Rendez-vous dans le dossier Front_Groupomania-P7 avec votre terminal  
-Puis installez les modules avec la commande : npm install
+Puis installez les modules avec la commande : npm install  
+
 Enfin pour demarrer le serveur du front tapez la commande : npm run dev  
 *Vous pouvez cliquer directement sur le lien que vous propose votre terminal sinon vous pouvez vous rendre sur votre navigateur a l'adresse suivante* [le lien](http://localhost:3000/)
