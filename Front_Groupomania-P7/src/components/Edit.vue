@@ -1,6 +1,5 @@
 
 <script>
-
 function logout() {//_________________________ Logout user
 
     localStorage.removeItem("token");

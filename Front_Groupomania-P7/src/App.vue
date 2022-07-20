@@ -21,5 +21,5 @@ export default {
 </script>
 
 <style>
-/* Par Bootstrap */
+/* traité avec Bootstrap et App.css */
 </style> 

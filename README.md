@@ -26,7 +26,8 @@ git clone https://github.com/Alpha1788/OCR_P7_Groupomania.git
 
 ### 2eme Etape 👇🏻 :
 Rendez-vous dans le dossier Back_Groupomania-P7 avec votre terminal  
-Puis installez les modules avec la commande : npm install
+Puis installez les modules avec la commande : npm install  
+
 Enfin pour demarrer le serveur du back tapez la commande : nodemon server  
   
 ### 3eme Etape 👇🏻 :  
@@ -34,4 +35,4 @@ Rendez-vous dans le dossier Front_Groupomania-P7 avec votre terminal
 Puis installez les modules avec la commande : npm install  
 
 Enfin pour demarrer le serveur du front tapez la commande : npm run dev  
-*Vous pouvez cliquer directement sur le lien que vous propose votre terminal sinon vous pouvez vous rendre sur votre navigateur a l'adresse suivante* [le lien](http://localhost:3000/)
+*Vous pouvez cliquer directement sur le lien que vous propose votre terminal sinon vous pouvez vous rendre sur votre navigateur a l'adresse suivante en cliquant sur [le lien](http://localhost:3000/)*

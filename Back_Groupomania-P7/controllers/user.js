@@ -56,6 +56,6 @@ exports.login = (req, res, next) => {
 
 // /!\ ATTENTION = Bout de code permettant de rapidement supprimer tout les users de la BDD (évite de les supprimer manuelement sur le site MongoDB Atlas)
 // User.deleteMany({})
-//   .then(() => console.log("Users deleted !"));
+//   .then(() => console.log("Tout les Utilisateurs effacés de la BDD !"));
 
 
