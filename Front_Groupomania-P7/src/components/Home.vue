@@ -28,7 +28,7 @@
 <script>
 //en premier le bootstrap s'appliqueras puis pourras etre modifier dans le dur avec app.css
 import "bootstrap/dist/css/bootstrap.min.css";
-import "/App.css";
+import "/Style.css";
 
 export default {
     name: "Home",

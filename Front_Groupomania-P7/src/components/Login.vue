@@ -43,7 +43,7 @@ function logUser(email, password) {
     },
     body: JSON.stringify({ email, password })
   })
-    .then(response => response.json()) //soucis de connexion !
+    .then(response => response.json())
     .then((res) => {
       if (res.error) {
         alert(res.error);
@@ -76,7 +76,7 @@ function logUser(email, password) {
 
 //en premier le bootstrap s'appliqueras puis pourras etre modifier dans le dur avec app.css
 import "bootstrap/dist/css/bootstrap.min.css";
-import "/App.css";
+import "/Style.css";
 export default {
   name: "Login", data,
   methods: {

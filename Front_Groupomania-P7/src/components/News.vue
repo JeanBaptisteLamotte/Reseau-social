@@ -1,6 +1,75 @@
+<template>
+  <div class="container-sm ">
+    <nav class=" navbar navbar-expand-lg navbar-light bg-light mt-3">
+      <div class="container-fluid bg-light">
+        <h1 class="navbar-brand">Groupomania </h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <button class="btn  like btn-lg mt-1 m-1 m-lg-3 "
+                @click="getPosts(this.post, name, title, imageUrl, content, usersLiked, date)">All
+                posts</button>
+              <button class="btn  like btn-lg mt-1 m-1 " @click="logout()">Logout</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="form-floating">
+      <h3 class="navbar-brand text-center m-3">Quoi de neuf {{ this.post.name }} ?</h3>
+      <div class="d-flex bg-light">
+        <textarea class="form-control m-3" placeholder="Title" v-model="title" type="text"></textarea>
+        <textarea class="form-control m-3" placeholder="Tape your text" id="floatingTextarea" v-model="content"
+          type="text"></textarea>
+      </div>
+    </div>
+    <div class="d-flex  mt-1">
+      <label v-if="title != '' && content != ''" for="file-input" class=" btn-light customBtn btn-lg mt-1">Add
+        image</label>
+      <!-- <small v-if ="this.imageName" class="text-danger">{{ imageName }}</small> -->
+      <input id="file-input" type="file" @change="fileSelect" />
+      <button v-if="title != '' && content != ''" type="submit" class="btn customBtn btn-light btn-lg mt-1 ms-auto"
+        @click="sendPost(this.post, title, content),
+        getPosts()">Send</button>
+    </div>
+    <hr class="mt-4 dropdown-divider" />
+    <li v-for="post in posts">
+      <div class="card mb-3 m-auto">
+        <div class="card-header mb-3">
+          <img src="/img_logo/icon.png" class="rounded-circle m-2" alt="logo de groupomania">
+          {{ post.name }} &#128172 {{ post.date }}
+        </div>
+        <img v-if="post.imageUrl" :src="post.imageUrl" class="card-img-top" alt="image postée par un utilisateur">
+        <hr class="mt-3 dropdown-divider" />
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content }}</p>
+          <div class="d-flex bg-light">
+            <div class="like">
+              <div id="heart" @click="likePost(post._id, post.likes, post.usersLiked)">
+                <div id="left" class="segments"></div>
+                <div id="right" class="segments"></div>
+              </div>
+              <div id="like-count">{{ post.likes }}</div>
+            </div>
+            <button v-if="userId == post.userId || role == 'admin'" id="edit" type="button"
+              class="btn  btn-lg  ms-auto like" @click="editPost(post._id)">Edit</button>
+            <button v-if="userId == post.userId || role == 'admin'" id="delete" type="button"
+              class="btn btn-lg  ms-auto like" @click="deletePost(post._id)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </div>
+</template>
+
+
+
 <script>
-
-
 function logout() {//_________________________ Logout user
 
   localStorage.removeItem("token");
@@ -265,72 +334,7 @@ export default {
     }
 }
 </script>
-<template>
-  <div class="container-sm ">
-    <nav class=" navbar navbar-expand-lg navbar-light bg-light mt-3">
-      <div class="container-fluid bg-light">
-        <h1 class="navbar-brand">Groupomania </h1>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <button class="btn  like btn-lg mt-1 m-1 m-lg-3 "
-                @click="getPosts(this.post, name, title, imageUrl, content, usersLiked, date)">All
-                posts</button>
-              <button class="btn  like btn-lg mt-1 m-1 " @click="logout()">Logout</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="form-floating">
-      <h3 class="navbar-brand text-center m-3">Quoi de neuf {{ this.post.name }} ?</h3>
-      <div class="d-flex bg-light">
-        <textarea class="form-control m-3" placeholder="Title" v-model="title" type="text"></textarea>
-        <textarea class="form-control m-3" placeholder="Tape your text" id="floatingTextarea" v-model="content"
-          type="text"></textarea>
-      </div>
-    </div>
-    <div class="d-flex  mt-1">
-      <label v-if="title != '' && content != ''" for="file-input" class=" btn-light customBtn btn-lg mt-1">Add image</label>
-      <!-- <small v-if ="this.imageName" class="text-danger">{{ imageName }}</small> -->
-      <input id="file-input" type="file" @change="fileSelect" />
-      <button v-if="title != '' && content != ''" type="submit" class="btn customBtn btn-light btn-lg mt-1 ms-auto" @click="sendPost(this.post, title, content),
-      getPosts()">Send</button>
-    </div>
-    <hr class="mt-4 dropdown-divider" />
-    <li v-for="post in posts">
-      <div class="card mb-3 m-auto">
-        <div class="card-header mb-3">
-          <img src="/img_logo/icon.png" class="rounded-circle m-2" alt="logo de groupomania">
-          {{ post.name }} &#128172 {{ post.date }}
-        </div>
-        <img v-if="post.imageUrl" :src="post.imageUrl" class="card-img-top" alt="image postée par un utilisateur">
-        <hr class="mt-3 dropdown-divider" />
-        <div class="card-body">
-          <h5 class="card-title">{{ post.title }}</h5>
-          <p class="card-text">{{ post.content }}</p>
-          <div class="d-flex bg-light">
-            <div class="like">
-              <div id="heart" @click="likePost(post._id, post.likes, post.usersLiked)">
-                <div id="left" class="segments"></div>
-                <div id="right" class="segments"></div>
-              </div>
-              <div id="like-count">{{ post.likes }}</div>
-            </div>
-            <button v-if="userId == post.userId || role == 'admin'" id="edit" type="button"
-              class="btn  btn-lg  ms-auto like" @click="editPost(post._id)">Edit</button>
-            <button v-if="userId == post.userId || role == 'admin'" id="delete" type="button"
-              class="btn btn-lg  ms-auto like" @click="deletePost(post._id)">Delete</button>
-          </div>
-        </div>
-      </div>
-    </li>
-  </div>
-</template>
+
 
 
 <style >

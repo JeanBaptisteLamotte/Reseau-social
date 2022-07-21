@@ -17,17 +17,11 @@
                                             v-model="email" />
                                     </div>
                                     <div class="mb-3">
-                                        <input id="inputPassword" type="password" placeholder="votre mot de passe" required=""
-                                            class="form-control rounded-pill border-0 shadow-sm px-4 text-danger"
-                                            v-model="password" />
+                                        <input id="inputPassword" type="password" placeholder="votre mot de passe" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-danger" v-model="password" />
                                     </div>
                                     <div class="d-grid gap-2 mt-2">
-                                        <button type="submit"
-                                            class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm"
-                                            @click.prevent="signUser(email, password)">Inscription</button>
-                                        <router-link to="/login"
-                                            class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm">
-                                            J'ai déjà un compte !</router-link>
+                                        <button type="submit" class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm" @click.prevent="signUser(email, password)">Inscription</button>
+                                        <router-link to="/login" class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm">J'ai déjà un compte !</router-link>
                                     </div>
                                 </form>
                             </div>
@@ -42,7 +36,7 @@
  <script>
 //en premier le bootstrap s'appliqueras puis pourras etre modifier dans le dur avec app.css
 import "bootstrap/dist/css/bootstrap.min.css";
-import "/App.css";
+import "/Style.css";
  
 function signUser(email, password) {
     const url = 'http://localhost:8080/api/auth/signup';

@@ -9,36 +9,6 @@ router.post('/login', validate, checkValidation, userCtrl.login);
 module.exports = router;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // const express = require('express');
 // const router = express.Router();
 
