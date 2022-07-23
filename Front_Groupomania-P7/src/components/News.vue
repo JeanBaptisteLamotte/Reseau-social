@@ -1,47 +1,44 @@
 <template>
   <div class="container-sm ">
-    <nav class=" navbar navbar-expand-lg navbar-light bg-light mt-3">
+    <nav class=" navbar navbar-expand-lg navbar-light bg-image mt-4">
       <div class="container-fluid bg-light">
-        <a href="/Home.vue"><h1 class="navbar-brand">Groupomania</h1>
+        <a class="navbar-brand" href="/">
+          <img class="rounded-circle m-2" src="../../public/img_et_logos/logo.png" alt="logo Groupomania" width="150" height="80">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <button class="btn  like btn-lg mt-1 m-1 m-lg-3 "
-                @click="getPosts(this.post, name, title, imageUrl, content, usersLiked, date)">All
-                posts</button>
-              <button class="btn  like btn-lg mt-1 m-1 " @click="logout()">Logout</button>
+            <li class="nav-item " >
+              <button class="btn  like btn-sm mt-1 m-1 m-lg-4 " @click="getPosts(this.post, name, title, imageUrl, content, usersLiked, date)">All posts</button>
+              <button class="btn  like btn-sm mt-1 m-1" @click="logout()">Logout</button>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+
     <div class="form-floating">
-      <h3 class="navbar-brand text-center m-3">Quoi de neuf {{ this.post.name }} ?</h3>
-      <div class="d-flex bg-light">
-        <textarea class="form-control m-3" placeholder="Title" v-model="title" type="text"></textarea>
-        <textarea class="form-control m-3" placeholder="Tape your text" id="floatingTextarea" v-model="content"
-          type="text"></textarea>
+      <h3 class="navbar-brand text-center m-4">Des nouvelles {{ this.post.name }} ?</h3>
+      <div class="d-flex bg-image">
+        <textarea class="form-control m-3" placeholder="Titre de votre post" v-model="title" type="text"></textarea>
+        <textarea class="form-control m-3" placeholder="Tapez votre texte" id="floatingTextarea" v-model="content" type="text"></textarea>
       </div>
     </div>
+
     <div class="d-flex  mt-1">
-      <label v-if="title != '' && content != ''" for="file-input" class=" btn-light customBtn btn-lg mt-1">Add
-        image</label>
+      <label v-if="title != '' && content != ''" for="file-input" class=" btn-light customBtn btn-lg mt-1">Rajoutez une Image</label>
       <!-- <small v-if ="this.imageName" class="text-danger">{{ imageName }}</small> -->
-      <input id="file-input" type="file" @change="fileSelect" />
-      <button v-if="title != '' && content != ''" type="submit" class="btn customBtn btn-light btn-lg mt-1 ms-auto"
-        @click="sendPost(this.post, title, content),
-        getPosts()">Send</button>
+      <input id="file-input" type="file" @change="fileSelect"/>
+      <button v-if="title != '' && content != ''" type="submit" class="btn customBtn btn-light btn-lg mt-1 ms-auto" @click="sendPost(this.post, title, content), getPosts()">Envoyer</button>
     </div>
-    <hr class="mt-4 dropdown-divider" />
+    <hr class="mt-4 dropdown-divider"/>
     <li v-for="post in posts">
       <div class="card mb-3 m-auto">
         <div class="card-header mb-3">
-          <img src="/img_logo/icon.png" class="rounded-circle m-2" alt="logo de groupomania">
-          {{ post.name }} &#128172 {{ post.date }}
+          <img src="../../public/img_et_logos/nom.png" class="rounded-circle m-2" alt="logo de groupomania">
+          {{ post.name }} &#9997 {{ post.date }}
         </div>
         <img v-if="post.imageUrl" :src="post.imageUrl" class="card-img-top" alt="image postée par un utilisateur">
         <hr class="mt-3 dropdown-divider" />
@@ -341,50 +338,38 @@ export default {
 
 .card {
 
-  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.42);
-  animation: cardPostAnim 2s ease 0s 1 normal forwards;
+  box-shadow: 5px 5px 10px 1px rgba(88, 77, 77, 0.42);
+  animation: cardPostAnim 1s ease 0s 1 normal forwards;
 }
-
 @keyframes cardPostAnim {
   0% {
-
     animation-timing-function: ease-in;
     opacity: 1;
     transform: translateY(-45px);
   }
-
   24% {
     opacity: 1;
   }
-
   40% {
     animation-timing-function: ease-in;
     transform: translateY(-24px);
   }
-
   65% {
     animation-timing-function: ease-in;
     transform: translateY(-12px);
   }
-
   82% {
     animation-timing-function: ease-in;
     transform: translateY(-6px);
   }
-
   93% {
     animation-timing-function: ease-in;
     transform: translateY(-4px);
   }
-
-  25%,
-  55%,
-  75%,
-  87% {
+  25%, 55%, 75%, 87% {
     animation-timing-function: ease-out;
     transform: translateY(0px);
   }
-
   100% {
     animation-timing-function: ease-out;
     opacity: 1;
@@ -395,7 +380,6 @@ export default {
 input {
   display: none;
 }
-
 textarea {
   resize: none !important;
 }
@@ -403,7 +387,7 @@ textarea {
 p {
   font-size: 1.5rem;
   font-family: "lato";
-  color: #4E5166;
+  color: #010101;
 }
 
 li {
@@ -411,7 +395,7 @@ li {
 }
 
 body {
-  background-color: #FFD7D7 !important;
+  background-color: #4E5166 !important;
 }
 
 
@@ -427,6 +411,7 @@ img {
   object-fit: contain;
   
 }
+
 
 .like {
   height: 3rem;
