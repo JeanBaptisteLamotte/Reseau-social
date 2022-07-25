@@ -12,9 +12,7 @@
                                 <p class="text-muted mb-1 fs-6 text-center">Veuillez remplir ces champs pour vous inscrire</p>
                                 <form>
                                     <div class="mb-3">
-                                        <input id="inputEmail" type="email" placeholder="votre adresse mail" required=""
-                                            autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4"
-                                            v-model="email" />
+                                        <input id="inputEmail" type="email" placeholder="votre adresse mail" required="" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" v-model="email" />
                                     </div>
                                     <div class="mb-3">
                                         <input id="inputPassword" type="password" placeholder="votre mot de passe" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-danger" v-model="password" />

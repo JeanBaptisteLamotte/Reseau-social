@@ -1,10 +1,9 @@
 <template>
     <div class="container-sm">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mt-3">
-            <div class="container-fluid">
-                <h1 class="navbar-brand">Groupomania</h1>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-image mt-3">
+            <div class="container-fluid bg-light">
+                <img class="rounded-circle m-2" src="../../public/img_et_logos/nom_+_logo.png" alt="logo Groupomania" width="150" height="80">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -48,7 +47,7 @@
 </template>
 
 <script>
-// Deconnesion User
+// Deconnexion du User
 function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
@@ -73,8 +72,9 @@ function getPostById() {
             this.post = res;
         })
         .catch(error => {
+            // Bloc permettant de verifier si le Token est bien valide
             if (error.status !== 200) {
-            alert("Oups ! Un problème est survenu. Veuillez vous reconnecter.");//_____ Get  if the token is valid !
+            alert("Un problème est survenu. Veuillez vous reconnecter.");
             localStorage.removeItem("token");
             localStorage.removeItem("userId");
             localStorage.removeItem("email");
@@ -84,8 +84,8 @@ function getPostById() {
             }  
         });
 }
-
-function updatePost(post) { //________________________ Update post
+// Modification d'un Post
+function updatePost(post) {
 location.reload();
     const formData = new FormData();
     if (post.imageUrl) {
@@ -114,9 +114,8 @@ location.reload();
             console.log(error);
         });
 }
-
-function data() { // _____________________________________ Data of user's posts
-
+// données sur les messages du User
+function data() {
     return {
         posts: [],
         post: {
@@ -126,17 +125,16 @@ function data() { // _____________________________________ Data of user's posts
         },
     }
 }
-
-export default { // _________________________________________ Export components
+// definition des composants d'exportation
+export default { 
     name: "Edit", data,
-
-    methods: { // Methods of the component 
+    methods: {
         getPostById,
         logout,
         updatePost() {
 
-            //  this.post.userId = this.userId,
-            this.post.title = this.post.title,
+            
+                this.post.title = this.post.title,
                 this.post.content = this.post.content,
                 this.post.imageUrl = this.imageUrl,
 

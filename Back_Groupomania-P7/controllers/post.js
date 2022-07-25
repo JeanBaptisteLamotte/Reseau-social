@@ -115,38 +115,6 @@ exports.likeAndDislike = (req, res, next) => {
       Post.updateOne({ _id: postId }, { $push: { usersLiked: userId }, $inc: { likes: +1 } })
         .then(() => res.status(200).json({ message: `J'aime` }))
         .catch((error) => res.status(400).json({ error }))
-
-      
-
-    // PARTIE A FINIR
-
-    //  break;// Break is used to stop the switch
-
-    // case 0: // Case 0 is used to remove a like
-    //   Post.findOne({ _id: postId })
-    //     .then((post) => {
-    //       if (post.usersLiked.includes(userId)) {
-    //         Post.updateOne({ _id: postId }, { $pull: { usersLiked: userId }, $inc: { likes: -1 } })
-    //           .then(() => res.status(200).json({ message: `Neutre` }))
-    //           .catch((error) => res.status(400).json({ error }))
-    //       }
-    //   if (post.usersDisliked.includes(userId)) {
-    //     Post.updateOne({ _id: postId }, { $pull: { usersDisliked: userId }, $inc: { dislikes: -1 } })
-    //       .then(() => res.status(200).json({ message: `Neutre` }))
-    //       .catch((error) => res.status(400).json({ error }))
-    //   }
-    // })
-    // .catch((error) => res.status(404).json({ error }))
-    // break;
-
-    // case -1:// Case -1 is used to add a dislike
-    //   Post.updateOne({ _id: postId }, { $push: { usersDisliked: userId }, $inc: { dislikes: +1 } })
-    //     .then(() => { res.status(200).json({ message: `Je n'aime pas` }) })
-    //     .catch((error) => res.status(400).json({ error }))
-    //   break;
-
-    // default:// Default is used to remove a dislike
-
   }
 }
 

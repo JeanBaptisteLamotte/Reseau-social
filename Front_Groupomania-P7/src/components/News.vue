@@ -3,14 +3,14 @@
     <nav class=" navbar navbar-expand-lg navbar-light bg-image mt-4">
       <div class="container-fluid bg-light">
         <a class="navbar-brand" href="/">
-          <img class="rounded-circle m-2" src="../../public/img_et_logos/logo.png" alt="logo Groupomania" width="150" height="80">
+          <img class="rounded-circle m-2" src="../../public/img_et_logos/nom_+_logo.png" alt="logo Groupomania" width="150" height="80">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item " >
+            <li class="nav-item ">
               <button class="btn  like btn-sm mt-1 m-1 m-lg-4 " @click="getPosts(this.post, name, title, imageUrl, content, usersLiked, date)">All posts</button>
               <button class="btn  like btn-sm mt-1 m-1" @click="logout()">Logout</button>
             </li>
@@ -20,7 +20,7 @@
     </nav>
 
     <div class="form-floating">
-      <h3 class="navbar-brand text-center m-4">Des nouvelles {{ this.post.name }} ?</h3>
+      <h3 class="navbar-brand text-center m-4 text-white">Des nouvelles {{ this.post.name }} ?</h3>
       <div class="d-flex bg-image">
         <textarea class="form-control m-3" placeholder="Titre de votre post" v-model="title" type="text"></textarea>
         <textarea class="form-control m-3" placeholder="Tapez votre texte" id="floatingTextarea" v-model="content" type="text"></textarea>
@@ -37,7 +37,7 @@
     <li v-for="post in posts">
       <div class="card mb-3 m-auto">
         <div class="card-header mb-3">
-          <img src="../../public/img_et_logos/nom.png" class="rounded-circle m-2" alt="logo de groupomania">
+          <img src="../../public/img_et_logos/pp.png" class="rounded-circle m-2" alt="logo de groupomania">
           {{ post.name }} &#9997 {{ post.date }}
         </div>
         <img v-if="post.imageUrl" :src="post.imageUrl" class="card-img-top" alt="image postée par un utilisateur">
@@ -90,15 +90,13 @@ function userName() {//____________________________Find the user name from him e
   const name = email.substring(0, email.lastIndexOf("@"));
   return name;
 }
-
-function sendPost(post) { //___________________________ Send a post
+//Envoyer un post
+function sendPost(post) {
 
   const url = 'http://localhost:8080/api/posts';
   const formData = new FormData();
   if (post.imageUrl) {
-    formData.append('image', post.imageUrl);
-  }
-
+    formData.append('image', post.imageUrl);}
   formData.append('userId', localStorage.getItem('userId'));
   formData.append('name', post.name);
   formData.append('date', post.date);
@@ -129,9 +127,8 @@ function sendPost(post) { //___________________________ Send a post
       }
     })
 }
-
-function data() { // ______________________________________ Data of user's posts
-
+// Données des messages de l'utilisateur
+function data() {
   return {
     posts: [],
     userId: "",
@@ -149,9 +146,8 @@ function data() { // ______________________________________ Data of user's posts
     },
   }
 }
-
-function getPosts() {//_________________________________________ Get all posts 
-
+// Faire apparaitre tous les messages
+function getPosts() {
   const url = 'http://localhost:8080/api/posts';
   fetch(url, {
     method: 'GET',
@@ -179,8 +175,8 @@ function getPosts() {//_________________________________________ Get all posts
       }
     })
 }
-
-function deletePost(id) {//___________________________________ Delete a post if this user is the owner of the post
+// Supprimer un message si cet utilisateur est le propriétaire du message
+function deletePost(id) {
 
 
   const url = 'http://localhost:8080/api/posts/' + id;
@@ -213,8 +209,8 @@ function deletePost(id) {//___________________________________ Delete a post if 
       }
     })
 }
-
-function editPost(id) {//_____________________________________ Edit a post by id 
+// Modifier un message si cet utilisateur est le propriétaire du message
+function editPost(id) { 
 
   const url = 'http://localhost:8080/api/posts/' + id;
   fetch(url, {
@@ -246,11 +242,11 @@ function editPost(id) {//_____________________________________ Edit a post by id
     });
 
 }
+// Possibilité pour le user de liker un message une seule fois par post
+function likePost(id, like, usersLiked) {
 
-function likePost(id, like, usersLiked) {//_____________________________________ Like a post by id 
-
-
-  const currentUserId = localStorage.getItem("userId"); //_________________________________________________Only one like per user
+   //Un seule Like par user
+  const currentUserId = localStorage.getItem("userId");
   const userLike = usersLiked.find(user => user === currentUserId);
   if (userLike) {
     alert("C'est gentil mais vous avez déjà liké ce post !");
@@ -285,14 +281,11 @@ function likePost(id, like, usersLiked) {//_____________________________________
     })
 }
 
-
+// Export du component News
 export default {
   name: "News", data,
-
   methods: {
-
     sendPost() {
-
       this.post.userId = localStorage.getItem("userId"),
         this.post.date = dateTime(),
         this.post.name = userName(),
@@ -301,31 +294,24 @@ export default {
         this.post.imageUrl = this.imageUrl,
         this.post.likes = 0,
         this.post.usersLiked = [],
-
         sendPost(this.post)
     },
-
-    fileSelect(e) {//_______________________________ Select the image to upload
+    // Sélectionnez l'image à télécharger
+    fileSelect(e) {
       console.log("e: ", e.target.files[0]);
       this.imageUrl = e.target.files[0];
-    
-     // this.imageName = e.target.files[0].name;
     },
-
     likePost,
     dateTime,
     getPosts,
     logout,
     deletePost,
     editPost,
-    
   },
  
-
-  mounted() { // mounted() est appelé une fois que le composant est chargé
- 
+  // mounted() est appelé une fois que le composant est chargé
+  mounted() { 
     this.getPosts()
-
     this.userId = localStorage.getItem("userId");
     this.role = localStorage.getItem("role");
     }
@@ -337,10 +323,10 @@ export default {
 <style >
 
 .card {
-
   box-shadow: 5px 5px 10px 1px rgba(88, 77, 77, 0.42);
   animation: cardPostAnim 1s ease 0s 1 normal forwards;
 }
+/* Animation du post qui tombe */
 @keyframes cardPostAnim {
   0% {
     animation-timing-function: ease-in;
@@ -385,7 +371,7 @@ textarea {
 }
 
 p {
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   font-family: "lato";
   color: #010101;
 }
@@ -402,8 +388,8 @@ body {
 .card-header img {
   width: 60px;
   height: 60px;
-  border: solid 1px #FFD7D7;
-  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.42);
+  border: solid 1px #FD2D01;
+  box-shadow: 5px 5px 20px 1px rgba(0, 0, 0, 0.42);
 }
 
 img {

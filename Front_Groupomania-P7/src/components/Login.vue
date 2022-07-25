@@ -10,16 +10,13 @@
               <p class="text-muted mb-1 fs-6 text-center">Veuillez rentrer vos identifiants pour vous connecter </p>
               <form>
                 <div class="mb-3">
-                  <input id="inputEmail" type="email" placeholder="votre adresse mail" required="required" autofocus=""
-                    class="form-control rounded-pill border-0 shadow-sm px-4" v-model="email" />
+                  <input id="inputEmail" type="email" placeholder="votre adresse mail" required="required" autofocus="" class="form-control rounded-pill border-0 shadow-sm px-4" v-model="email" />
                 </div>
                 <div class="mb-3">
-                  <input id="inputPassword" type="password" placeholder="votre mot de passe" required=""
-                    class="form-control rounded-pill border-0 shadow-sm px-4 text-danger" v-model="password" />
+                  <input id="inputPassword" type="password" placeholder="votre mot de passe" required="" class="form-control rounded-pill border-0 shadow-sm px-4 text-danger" v-model="password" />
                 </div>
                 <div class="d-grid gap-2 mt-2">
-                  <button type="submit" class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm"
-                    @click.prevent="logUser(email, password)">Connexion</button>
+                  <button type="submit" class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm" @click.prevent="logUser(email, password)">Connexion</button>
                   <router-link to="/signup" class="btn btn-danger btn-block text-uppercase mb-2 rounded-pill shadow-sm">
                     Je n'ai pas de compte
                     !</router-link>
@@ -61,7 +58,7 @@ function logUser(email, password) {
       else {
         localStorage.setItem('token', res.token);
         localStorage.setItem('userId', res.userId);
-        localStorage.setItem('role', res.role);//afin d'affficher les boutons d'editeur
+        localStorage.setItem('role', res.role);//afin d'affficher les boutons d'editeur ou non
         localStorage.setItem('email', email);
 
         this.$router.push("/news");
