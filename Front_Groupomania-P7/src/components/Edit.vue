@@ -132,12 +132,9 @@ export default {
         getPostById,
         logout,
         updatePost() {
-
-            
                 this.post.title = this.post.title,
                 this.post.content = this.post.content,
                 this.post.imageUrl = this.imageUrl,
-
                 updatePost(this.post)
         },
         fileSelect(e) { // _________________________ Select image 
@@ -146,16 +143,14 @@ export default {
         },
     },
     mounted() {// Mount the component
-
         this.getPostById();
     }
 }
-
 </script>
 
 
 <style >
-.like { /**Style of buttons */
+.like { /*Style des bouttons like*/
     height: 3rem;
     width: fit-content;
     box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1);

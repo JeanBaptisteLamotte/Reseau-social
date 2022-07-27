@@ -29,7 +29,6 @@
 
     <div class="d-flex  mt-1">
       <label v-if="title != '' && content != ''" for="file-input" class=" btn-light customBtn btn-lg mt-1">Rajoutez une Image</label>
-      <!-- <small v-if ="this.imageName" class="text-danger">{{ imageName }}</small> -->
       <input id="file-input" type="file" @change="fileSelect"/>
       <button v-if="title != '' && content != ''" type="submit" class="btn customBtn btn-light btn-lg mt-1 ms-auto" @click="sendPost(this.post, title, content), getPosts()">Envoyer</button>
     </div>
@@ -75,17 +74,16 @@ function logout() {
   localStorage.removeItem("role");
   this.$router.push("/login");
 }
-
-function dateTime() {// _________________________Date & hours of the user send him post
-
+//Date et heures de l'envoi du courrier par l'utilisateur
+function dateTime() {
   const now = new Date();
   const date = now.getDate();
   const month = now.getMonth() + 1;
   const year = now.getFullYear();
   return date + "/" + month + "/" + year;
 }
-
-function userName() {//____________________________Find the user name from him email
+//Retrouver le nom de l'utilisateur à partir de son email
+function userName() {
   const email = localStorage.getItem('email');
   const name = email.substring(0, email.lastIndexOf("@"));
   return name;
@@ -157,11 +155,7 @@ function getPosts() {
   })
     .then(response => response.json())
     .then((res) => {
-
       this.posts = res.reverse();
-      // this.title = "";
-      // this.content = "";
-
     })
     .catch(error => {
       if (error.status !== 200) {
@@ -177,8 +171,6 @@ function getPosts() {
 }
 // Supprimer un message si cet utilisateur est le propriétaire du message
 function deletePost(id) {
-
-
   const url = 'http://localhost:8080/api/posts/' + id;
   fetch(url, {
     method: 'DELETE',
@@ -186,17 +178,13 @@ function deletePost(id) {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + localStorage.getItem("token")
     },
-
     body: JSON.stringify({ id: id })
   })
     .then(response => response.json())
     .then((res) => {
-
-
       console.log(res);
       this.getPosts();
     })
-
     .catch(error => {
       if (error.status !== 200) {
         alert("Oups ! Un problème est survenu. Veuillez vous reconnecter.");
@@ -222,14 +210,10 @@ function editPost(id) {
   })
     .then(response => response.json())
     .then((res) => {
-      
       this.post = res;
-      
       this.$router.push("/edit/" + id);
     })
-
     .catch(error => {
-
       if (error.status !== 200) {
         alert("Oups ! Un problème est survenu. Veuillez vous reconnecter.");//_____ Get  if the token is valid !
         localStorage.removeItem("token");
@@ -240,11 +224,9 @@ function editPost(id) {
         console.log(error);
       }
     });
-
 }
-// Possibilité pour le user de liker un message une seule fois par post
+// Possibilité pour le user de liker un message mais seulement une seule fois par post /!\
 function likePost(id, like, usersLiked) {
-
    //Un seule Like par user
   const currentUserId = localStorage.getItem("userId");
   const userLike = usersLiked.find(user => user === currentUserId);
@@ -274,7 +256,6 @@ function likePost(id, like, usersLiked) {
     .then((res) => {
       console.log(res);
       this.getPosts();
-
     })
     .catch(error =>{
       console.log(error);
@@ -308,7 +289,6 @@ export default {
     deletePost,
     editPost,
   },
- 
   // mounted() est appelé une fois que le composant est chargé
   mounted() { 
     this.getPosts()

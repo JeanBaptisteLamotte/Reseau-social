@@ -14,7 +14,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
 import { createRouter, createWebHistory } from 'vue-router'
 
-const routes = [ // Routes are the links that the user can click on to go to a specific page
+// Les routes sont les chemins sur lesquels l'utilisateur peut cliquer pour accéder à une page spécifique.
+const routes = [ 
 
     { path: '/', component: Home },
     { path: '/signup', component: Signup },
@@ -25,10 +26,10 @@ const routes = [ // Routes are the links that the user can click on to go to a s
 
 const router = createRouter({ history: createWebHistory(), routes })
 
-
-router.beforeEach((to) => { // BeforeEach is a hook that is called before each route transition
-
-    if (isLoginRequired(to)) { // If the user is not logged in and he tries to go to a private page, he is redirected to the login page
+// "BeforeEach" est un crochet qui est appelé avant chaque transition de route.
+router.beforeEach((to) => {
+    // Si l'utilisateur n'est pas connecté et qu'il tente d'accéder à une page privée, il est redirigé vers la page de connexion.
+    if (isLoginRequired(to)) { 
         return router.push('/login')
     }
 
@@ -39,12 +40,13 @@ function isLoginRequired(to) {
     if (!isTokenValid()) return true
     return false
 }
-
-function isPrivatePage(to) { // Define if the page is private or not
+// Définir si la page est privée ou non
+function isPrivatePage(to) { 
     const publicPages = ['/login', '/signup', '/']
     return !publicPages.includes(to.path)
 }
-function isTokenInCache() { // Get if the token is in the cache
+// Obtenir si le jeton est dans le cache
+function isTokenInCache() { 
     return localStorage.getItem('token') != null
 }
 function isTokenValid() {
