@@ -3,7 +3,7 @@
     <nav class=" navbar navbar-expand-lg navbar-light bg-image mt-4">
       <div class="container-fluid bg-light">
         <a class="navbar-brand" href="/">
-          <img class="rounded-circle m-2" src="../../public/img_et_logos/nom_+_logo.png" alt="logo Groupomania" width="150" height="80">
+          <img class="rounded-circle m-2" src="/img_et_logos/nom_+_logo.png" alt="logo Groupomania" width="150" height="80">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -36,7 +36,7 @@
     <li v-for="post in posts">
       <div class="card mb-3 m-auto">
         <div class="card-header mb-3">
-          <img src="../../public/img_et_logos/pp.png" class="rounded-circle m-2" alt="logo de groupomania">
+          <img src="/img_et_logos/pp.png" class="rounded-circle m-2" alt="logo de groupomania">
           {{ post.name }} &#9997 {{ post.date }}
         </div>
         <img v-if="post.imageUrl" :src="post.imageUrl" class="card-img-top" alt="image postée par un utilisateur">
@@ -227,14 +227,13 @@ function editPost(id) {
 }
 // Possibilité pour le user de liker un message mais seulement une seule fois par post /!\
 function likePost(id, like, usersLiked) {
-   //Un seule Like par user
+  // Un seule Like par user
   const currentUserId = localStorage.getItem("userId");
   const userLike = usersLiked.find(user => user === currentUserId);
   if (userLike) {
     alert("C'est gentil mais vous avez déjà liké ce post !");
     return;
   }
-
   if (like = 1) {
     this.post.likes = this.post.likes + 1;
   }

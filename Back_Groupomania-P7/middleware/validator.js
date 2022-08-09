@@ -7,11 +7,11 @@ const validate = [
     check('email')
         .isEmail()
         .isLength({ min: 5 })
-        .withMessage('Email invalide')
+        .withMessage('Votre adresse mail est invalide, veuillez saisir un minimun de 5 caractères')
         .normalizeEmail(),
     check('email')
         .matches(/^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/)
-        .withMessage('Email invalide'),
+        .withMessage('Votre adresse mail est invalide'),
 
     // mdp
     check('password')
